@@ -7,189 +7,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      overflow: hidden;
-      background: #020608;
-    }
-
-    .hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .noise-overlay {
-      position: absolute;
-      inset: 0;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .vignette {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, rgba(2,6,8,0.5) 100%);
-      pointer-events: none;
-    }
-
-    .content {
-      position: relative;
-      z-index: 10;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 8vw;
-      max-width: 900px;
-    }
-
-    .kicker {
-      font-size: clamp(10px, 1.2vw, 13px);
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #14b8a6;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s ease-out 0.3s forwards;
-    }
-
-    .headline {
-      font-size: clamp(32px, 6vw, 68px);
-      font-weight: 300;
-      line-height: 1.1;
-      color: #f0fdfa;
-      letter-spacing: -0.02em;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s ease-out 0.5s forwards;
-    }
-
-    .headline-gradient {
-      display: block;
-      background: linear-gradient(135deg, #14b8a6 0%, #38bdf8 50%, #c084fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .subhead {
-      font-size: clamp(15px, 1.8vw, 19px);
-      font-weight: 400;
-      line-height: 1.6;
-      color: rgba(224, 242, 254, 0.7);
-      margin-top: 2rem;
-      max-width: 540px;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s ease-out 0.7s forwards;
-    }
-
-    .cta-group {
-      margin-top: 2.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s ease-out 0.9s forwards;
-    }
-
-    .btn-primary {
-      padding: 1rem 2rem;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      border: none;
-      border-radius: 2px;
-      background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
-      color: #021a14;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 0 30px rgba(20, 184, 166, 0.3);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 0 40px rgba(20, 184, 166, 0.5);
-    }
-
-    .btn-secondary {
-      padding: 1rem 2rem;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      border: 1px solid rgba(20, 184, 166, 0.4);
-      border-radius: 2px;
-      background: transparent;
-      color: #5eead4;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .btn-secondary:hover {
-      border-color: rgba(20, 184, 166, 0.8);
-      background: rgba(20, 184, 166, 0.1);
-    }
-
-    @keyframes fadeSlideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 600px) {
-      .content {
-        padding: 0 6vw;
-      }
-      .cta-group {
-        flex-direction: column;
-      }
-      .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./bioelectric-core.css">
 </head>
-<body>
-  <div class="hero">
-    <canvas id="canvas"></canvas>
-    <div class="noise-overlay"></div>
-    <div class="vignette"></div>
-    
-    <div class="content">
-      <p class="kicker">Next-Generation Healing Technology</p>
-      <h1 class="headline">
+<body class="bioelectric-page">
+  <div class="bioelectric-hero">
+    <div class="bioelectric">
+      <canvas id="canvas"></canvas>
+      <div class="noise-overlay"></div>
+      <div class="vignette"></div>
+    </div>
+
+    <div class="bioelectric-content">
+      <p class="bioelectric-kicker">Next-Generation Healing Technology</p>
+      <h1 class="bioelectric-headline">
         <span>Intelligent impulses.</span>
-        <span class="headline-gradient">Profound healing.</span>
+        <span class="bioelectric-headline-gradient">Profound healing.</span>
       </h1>
-      <p class="subhead">
+      <p class="bioelectric-subhead">
         Harnessing your body's bioelectric language to accelerate recovery and restore natural balance.
       </p>
-      <div class="cta-group">
-        <button class="btn-primary">Discover the Science</button>
-        <button class="btn-secondary">View Clinical Results</button>
+      <div class="bioelectric-cta-group">
+        <button class="bioelectric-btn-primary">Discover the Science</button>
+        <button class="bioelectric-btn-secondary">View Clinical Results</button>
       </div>
     </div>
   </div>
