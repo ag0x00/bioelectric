@@ -166,7 +166,6 @@ class Pulse {
  * @param {HTMLCanvasElement} canvas - The canvas element to draw on
  * @param {Object} options - Configuration options
  * @param {boolean} options.useContainerSize - If true, size to parent container; if false, size to window
- * @returns {Object} Control object with stop() and start() methods
  */
 function createBioElectricAnimation(canvas, options = {}) {
   const useContainerSize = options.useContainerSize || false;
@@ -174,7 +173,7 @@ function createBioElectricAnimation(canvas, options = {}) {
   const ctx = canvas.getContext('2d');
   if (!ctx) {
     console.error('BioElectric: Failed to get 2D canvas context');
-    return { stop: () => {}, start: () => {} };
+    return;
   }
 
   let width, height;
@@ -358,22 +357,6 @@ function createBioElectricAnimation(canvas, options = {}) {
     animationId = requestAnimationFrame(draw);
   }
 
-  function stop() {
-    if (animationId) {
-      cancelAnimationFrame(animationId);
-      animationId = null;
-    }
-    clearTimeout(resizeTimeout);
-    window.removeEventListener('resize', debouncedResize);
-  }
-
   // Auto-start
   start();
-
-  return { stop, start };
-}
-
-// Export for module environments
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { createBioElectricAnimation, Point, Pulse };
 }
