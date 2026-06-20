@@ -1,0 +1,7 @@
+.DS_Store
+
+# Screensaver build artifacts
+screensaver/macos/.build/
+screensaver/macos/*.saver
+screensaver/windows/bin/
+screensaver/windows/obj/

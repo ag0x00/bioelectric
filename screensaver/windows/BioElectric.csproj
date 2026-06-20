@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <AssemblyName>BioElectric</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2592.51" />
+  </ItemGroup>
+
+  <!-- Bundle the web package next to the binary: screensaver-specific files + shared core from repo root. -->
+  <Target Name="CopyWebContent" AfterTargets="Build">
+    <ItemGroup>
+      <WebFiles Include="$(ProjectDir)..\web_content\**\*.*" />
+      <CoreFiles Include="$(ProjectDir)..\..\bioelectric-core.js;$(ProjectDir)..\..\bioelectric-core.css" />
+    </ItemGroup>
+    <Copy SourceFiles="@(WebFiles)" DestinationFiles="@(WebFiles->'$(OutDir)web_content\%(RecursiveDir)%(Filename)%(Extension)')" />
+    <Copy SourceFiles="@(CoreFiles)" DestinationFolder="$(OutDir)web_content" />
+  </Target>
+
+</Project>
