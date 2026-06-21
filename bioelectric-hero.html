@@ -35,17 +35,9 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/d3-delaunay@6.0.4"></script>
-  <script>
-    if (typeof d3 === 'undefined' || !d3.Delaunay) {
-      console.error('BioElectric: d3-delaunay failed to load from CDN');
-    }
-  </script>
   <script src="./bioelectric-core.js"></script>
   <script>
-    const canvas = document.getElementById('canvas');
-    const animation = createBioElectricAnimation(canvas, { useContainerSize: false });
-    // To stop: animation.stop();
-    // To restart: animation.start();
+    createBioElectricAnimation(document.getElementById('canvas'), { useContainerSize: false });
   </script>
 </body>
 </html>

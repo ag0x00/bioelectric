@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BioElectric Screensaver</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #020608;
+      cursor: none;
+    }
+    /* Fill the viewport at any aspect ratio (4:3, 16:9, 32:9). */
+    .bioelectric-hero {
+      position: fixed;
+      inset: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="./bioelectric-core.css">
+</head>
+<body>
+  <div class="bioelectric-hero">
+    <div class="bioelectric">
+      <canvas id="canvas"></canvas>
+      <div class="noise-overlay"></div>
+      <div class="vignette"></div>
+    </div>
+  </div>
+
+  <!-- Vendored locally — no CDN, runs fully offline. -->
+  <script src="./vendor/d3-delaunay.js"></script>
+  <script src="./bioelectric-core.js"></script>
+  <script>
+    createBioElectricAnimation(document.getElementById('canvas'), { useContainerSize: false });
+  </script>
+</body>
+</html>
