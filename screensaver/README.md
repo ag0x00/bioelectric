@@ -31,6 +31,16 @@ Sources:
 - `Geometry.swift` — Delaunay triangulation (Bowyer-Watson)
 - `BioElectricView.swift` — `ScreenSaverView` subclass: points, pulses, rendering
 - `Info.plist`, `build_mac.sh`
+- `thumbnail.png` / `thumbnail@2x.png`, `generate_thumbnail.js` — picker thumbnail
+
+**Picker thumbnail.** System Settings shows `thumbnail.png` / `thumbnail@2x.png`
+(in `Contents/Resources/`) in the screen-saver grid; without them macOS falls back
+to a generic icon. `generate_thumbnail.js` renders them from the same
+`d3-delaunay` the web engine uses — run `node generate_thumbnail.js` and rebuild.
+The dark live preview at the top of the pane renders the saver itself, not these.
+(Note: the legacy-`.saver` picker thumbnail has been buggy on some recent macOS
+releases — if the grid still shows the generic icon, re-select the saver or
+log out and back in.)
 
 **Planned — live wallpaper.** macOS Tahoe can keep a screen saver running as the
 animated desktop *background* after login. There's no public API to do that from a

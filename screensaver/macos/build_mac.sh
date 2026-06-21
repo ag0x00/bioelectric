@@ -31,6 +31,12 @@ lipo -create "$BUILD/$MODULE-arm64" "$BUILD/$MODULE-x86_64" -output "$SAVER/Cont
 
 cp "$HERE/Info.plist" "$SAVER/Contents/Info.plist"
 
+# Picker thumbnail for the System Settings screen-saver grid. macOS reads these
+# by name from Resources/ (no Info.plist key); without them it shows a generic
+# icon. Regenerate with: node generate_thumbnail.js
+mkdir -p "$SAVER/Contents/Resources"
+cp "$HERE/thumbnail.png" "$HERE/thumbnail@2x.png" "$SAVER/Contents/Resources/"
+
 # Ad-hoc sign the whole bundle — macOS won't load an unsigned .saver in the sandboxed engine.
 codesign --force --deep --sign - "$SAVER"
 
