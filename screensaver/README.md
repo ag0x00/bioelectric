@@ -7,6 +7,7 @@ macos/           .saver bundle — native Swift + CoreGraphics (no WebView)
 windows/         .scr source — C# + WebView2 (wraps the offline web page)
 web_content/     self-contained offline web page (used by Windows only)
 00-04_*.md       original planning docs
+05_*.md          live-wallpaper + Metal renderer design (planned, not built)
 ```
 
 The two platforms render differently on purpose — see [macOS](#macos) below.
