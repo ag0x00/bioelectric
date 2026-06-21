@@ -5,8 +5,8 @@ as the screen saver while idle, and **keeps animating as the desktop background
 after login** — and move the native renderer from CoreGraphics to **Metal** so it
 is cheap enough to run continuously.
 
-This is a planning doc in the spirit of `00–04`. The current built state is
-described in `README.md`; update that once this ships, not before.
+This is a forward-looking design doc — nothing here is built yet. The current
+shipped state is described in `README.md`; update that once this lands, not before.
 
 ## 1. The honest constraint
 

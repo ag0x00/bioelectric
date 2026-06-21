@@ -70,6 +70,13 @@ In Squarespace: add a Code Block, paste the embed code, and the animation fills 
 
 ~60fps on modern devices with 250 points and real-time triangulation. The canvas redraws fully each frame (no persistent state). Reduce `POINT_COUNT_*` for low-end mobile.
 
+## Native screensavers
+
+The same animation ships as native screen savers for macOS (`.saver`, a native
+Swift + CoreGraphics port) and Windows (`.scr`, wrapping the offline web page),
+with a macOS "live wallpaper" mode planned. See
+[`screensaver/README.md`](screensaver/README.md).
+
 ## Credits & license
 
 Created by Anton Goncharov ([@ag0x00](https://github.com/ag0x00)), built with Claude (Anthropic). MIT License, Copyright (c) 2025 Anton Goncharov.
