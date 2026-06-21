@@ -6,7 +6,7 @@ Native screensavers of the BioElectric animation for macOS and Windows.
 macos/           .saver bundle — native Swift + CoreGraphics (no WebView)
 windows/         .scr source — C# + WebView2 (wraps the offline web page)
 web_content/     self-contained offline web page (used by Windows only)
-00-04_*.md       original planning docs
+wallpaper-design.md   planned macOS live-wallpaper + Metal renderer (design only)
 ```
 
 The two platforms render differently on purpose — see [macOS](#macos) below.
@@ -31,6 +31,12 @@ Sources:
 - `Geometry.swift` — Delaunay triangulation (Bowyer-Watson)
 - `BioElectricView.swift` — `ScreenSaverView` subclass: points, pulses, rendering
 - `Info.plist`, `build_mac.sh`
+
+**Planned — live wallpaper.** macOS Tahoe can keep a screen saver running as the
+animated desktop *background* after login. There's no public API to do that from a
+`.saver`, so the plan is a companion agent app that shares a Metal port of the
+renderer. Full design and phased plan in
+[`wallpaper-design.md`](wallpaper-design.md) — nothing built yet.
 
 ## Windows — WebView2
 
